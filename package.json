@@ -2,11 +2,20 @@
   "name": "backnosql",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
+  "type": "module",
   "scripts": {
+    "start":"node app.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "mogoose": "^0.0.1-security"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
 }
