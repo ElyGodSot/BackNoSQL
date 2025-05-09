@@ -12,7 +12,20 @@ const UserSchema = new mongoose.Schema({
         required:true,
         unique:true,
         match:/^\w+([\.-]?\w+)@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+    },
+    password:{
+        type:String,
+        required:true
+
     }
-});
+    });
+
+UserSchema.pre('save', async function(next){
+    if(!this.isModified('password'))return next();
+    this.password=await bcrypt.hash(this.password,15)
+    next();
+})
 const User=mongoose.model('User', UserSchema);
 export default User
+
+// npm install bcrypt
